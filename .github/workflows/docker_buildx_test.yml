@@ -33,4 +33,7 @@ jobs:
       with:
         push: true
         tags: ghcr.io/${{ github.actor }}/demo123:latest
+        platforms: 
+        - linux/amd64
+        - linux/arm64
 
