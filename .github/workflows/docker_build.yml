@@ -16,3 +16,13 @@ jobs:
         uname -a
     - run: date
     - run: printenv
+    - run: echo "Hello World!" > hello.txt
+    - run: pwd
+    - run: ls -ld ${PWD}/*
+
+  build-part-2:
+    needs: build-test123
+    runs-on: ubuntu-latest
+    steps:
+      run: ls -ld ${PWD}/*
+      run: pwd
