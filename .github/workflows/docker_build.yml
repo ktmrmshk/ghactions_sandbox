@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: 'ktmrmshk/bloky'
-        path: 'bloky'
+        token: ${{ secrets.PAT }}
     - name: command run
       run: |
         uname -a
