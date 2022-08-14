@@ -1,0 +1,36 @@
+---
+name: docker_build_demo
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build-test123:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout this repo
+      uses: actions/checkout@v3
+      #with:
+      #  repository: 'ktmrmshk/bloky'
+      #  token: ${{ secrets.PAT }}
+    
+    - name: set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    - name: set up docker buildx
+      use:  docker/setup-buildx-action@v2
+      id:   buildx
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.PAT}}
+
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: ghcr.io/${{ github.actor }}/demo123:latest
+
