@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  buildx-test:
+  bloky_dnb_buikd_with_buildx:
     runs-on: ubuntu-latest
     steps:
     - name: checkout bloky repo

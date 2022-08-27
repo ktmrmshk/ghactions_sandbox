@@ -1,7 +1,7 @@
 ---
 name: docker_build_demo
 on:
-  push:
+  #push:
   workflow_dispatch:
 
 jobs:
