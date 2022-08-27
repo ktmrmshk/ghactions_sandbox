@@ -1,6 +1,8 @@
 name: bloky_dnb_job
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '25 */2 * * *'
 jobs:
   execute:
     runs-on: ubuntu-latest
