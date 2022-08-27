@@ -4,14 +4,17 @@ on:
 jobs:
   execute:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/ktmrmshk/bloky_dnb:latest
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.PAT }}
+    
     steps:
+    - name: login to github registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.PAT}}
+
     - name: print help
       run: | 
-        #docker run ghcr.io/ktmrmshk/bloky_dnb:latest \
-        #python /tmp/src/bloky/app_dnb.py --help
-        docker images
+        docker run ghcr.io/ktmrmshk/bloky_dnb:latest \
+        python /tmp/src/bloky/app_dnb.py --help
+      
