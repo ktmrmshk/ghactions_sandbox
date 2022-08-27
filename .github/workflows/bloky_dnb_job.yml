@@ -18,3 +18,13 @@ jobs:
         docker run ghcr.io/ktmrmshk/bloky_dnb:latest \
         python /tmp/src/bloky/app_dnb.py --help
       
+    - name: run bloky
+      run: |
+        docker run \
+        -e SLACK_URL='${{ secrets.SLACK_URL }}' \
+        -e SLACK_TOKEN='${{ secrets.SLACK_TOKEN }}' \
+        -e SLACK_CHANNEL='${{ secrets.SLACK_CHANNEL }}' \
+        -e AWS_ACCESS_KEY='${{ secrets.AWS_ACCESS_KEY }}' \
+        -e AWS_SECRET_KEY='${{ secrets.AWS_SECRET_KEY }}' \
+        -e DBFILE_S3_PATH='${{ secrets.DBFILE_S3_PATH_DNB }}' \
+        ghcr.io/ktmrmshk/bloky_dnb:latest python /tmp/src/bloky/app_dnb.py
