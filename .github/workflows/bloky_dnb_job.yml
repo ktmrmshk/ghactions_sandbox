@@ -12,5 +12,6 @@ jobs:
     steps:
     - name: print help
       run: | 
-        docker run ghcr.io/ktmrmshk/bloky_dnb:latest \
-        python /tmp/src/bloky/app_dnb.py --help
+        #docker run ghcr.io/ktmrmshk/bloky_dnb:latest \
+        #python /tmp/src/bloky/app_dnb.py --help
+        docker images
